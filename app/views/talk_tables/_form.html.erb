@@ -1,32 +1,48 @@
-<%= form_with(model: talk_table, local: true) do |form| %>
-  <% if talk_table.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(talk_table.errors.count, "error") %> prohibited this talk_table from being saved:</h2>
+<%= form_for @talk_table, :html => { :class => "form-horizontal talk_table" } do |f| %>
 
-      <ul>
-      <% talk_table.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <% if @talk_table.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@talk_table.errors.count, "error") %> prohibited this talk_table from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @talk_table.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :input %>
-    <%= form.text_field :input %>
+  <div class="form-group">
+    <%= f.label :input, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :input, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:input) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :message, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :message, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:message) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :tag, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :tag, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:tag) %>
   </div>
 
-  <div class="field">
-    <%= form.label :message %>
-    <%= form.text_field :message %>
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                talk_tables_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :tag %>
-    <%= form.text_field :tag %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
