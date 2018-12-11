@@ -1,0 +1,2 @@
+class TalkTable < ApplicationRecord
+end
