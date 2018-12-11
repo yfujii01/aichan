@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Input:</strong>
+  <%= @talk_table.input %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @talk_table.message %>
+</p>
+
+<p>
+  <strong>Tag:</strong>
+  <%= @talk_table.tag %>
+</p>
+
+<%= link_to 'Edit', edit_talk_table_path(@talk_table) %> |
+<%= link_to 'Back', talk_tables_path %>
