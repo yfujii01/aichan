@@ -70,3 +70,9 @@ gem "execjs", "~> 2.7"
 gem "twitter-bootstrap-rails", "~> 3.2"
 
 gem "jquery-rails", "~> 4.3"
+
+gem "devise", "~> 4.5"
+
+gem "letter_opener_web", "~> 1.3", :group => :development
+
+gem "devise-bootstrap-views", "~> 1.1"
