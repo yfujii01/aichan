@@ -19,11 +19,6 @@ jobs:
     steps:
       - checkout
       
-      # check rubocop
-      - run:
-        name: rubocop
-        command: bundle exec rubocop
-
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -44,6 +39,11 @@ jobs:
       # Database setup
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
+
+      # check rubocop
+      - run:
+        name: rubocop
+        command: bundle exec rubocop
 
       # run tests!
     #   - run:
