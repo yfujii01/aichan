@@ -6,7 +6,7 @@ class TalkTablesController < ApplicationController
   # GET /talk_tables
   # GET /talk_tables.json
   def index
-    @talk_tables = TalkTable.all
+@talk_tables = TalkTable.all
   end
 
   # GET /talk_tables/1
