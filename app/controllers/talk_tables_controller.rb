@@ -15,7 +15,7 @@ class TalkTablesController < ApplicationController
 
   # GET /talk_tables/new
   def new
-    @talk_table = TalkTable.new
+@talk_table = TalkTable.new
   end
 
   # GET /talk_tables/1/edit
