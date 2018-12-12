@@ -16,6 +16,12 @@ https://github.com/yfujii01/aichan
 
 https://dashboard.heroku.com/apps/aichan-talk
 
+## ローカルで動作確認する場合
+
+.env.sampleの中身を書き換え.envにリネームする
+
+ngrokなどでhttps公開する
+
 ## etc
 
 * Ruby version
