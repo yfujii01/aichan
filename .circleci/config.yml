@@ -42,8 +42,8 @@ jobs:
 
       # check rubocop
       - run:
-        name: rubocop
         command: bundle exec rubocop
+        name: rubocop
 
       # run tests!
     #   - run:
