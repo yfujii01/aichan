@@ -1,5 +1,9 @@
 # aichan
 
+## 友だち追加QRコード
+
+![友達追加QRコード](doc/img/qr.png "友達追加QRコード")
+
 ## 設定画面
 
 https://aichan-talk.herokuapp.com/
@@ -50,3 +54,74 @@ $ rails test
 * Deployment instructions
 
 Once merged into the master it will be deployed automatically.
+
+## Line Messaging APIから送られるメッセージ(サンプル)
+
+```
+{
+  "events": [
+    {
+      "replyToken": "00000000000000000000000000000000",
+      "type": "message",
+      "timestamp": 1544620669123,
+      "source": {
+        "type": "user",
+        "userId": "Udeadbeefdeadbeefdeadbeefdeadbeef"
+      },
+      "message": {
+        "id": "100001",
+        "type": "text",
+        "text": "Hello, world"
+      }
+    },
+    {
+      "replyToken": "ffffffffffffffffffffffffffffffff",
+      "type": "message",
+      "timestamp": 1544620669123,
+      "source": {
+        "type": "user",
+        "userId": "Udeadbeefdeadbeefdeadbeefdeadbeef"
+      },
+      "message": {
+        "id": "100002",
+        "type": "sticker",
+        "packageId": "1",
+        "stickerId": "1"
+      }
+    }
+  ],
+  "linetalk": {
+    "events": [
+      {
+        "replyToken": "00000000000000000000000000000000",
+        "type": "message",
+        "timestamp": 1544620669123,
+        "source": {
+          "type": "user",
+          "userId": "Udeadbeefdeadbeefdeadbeefdeadbeef"
+        },
+        "message": {
+          "id": "100001",
+          "type": "text",
+          "text": "Hello, world"
+        }
+      },
+      {
+        "replyToken": "ffffffffffffffffffffffffffffffff",
+        "type": "message",
+        "timestamp": 1544620669123,
+        "source": {
+          "type": "user",
+          "userId": "Udeadbeefdeadbeefdeadbeefdeadbeef"
+        },
+        "message": {
+          "id": "100002",
+          "type": "sticker",
+          "packageId": "1",
+          "stickerId": "1"
+        }
+      }
+    ]
+  }
+}
+```

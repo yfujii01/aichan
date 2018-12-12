@@ -83,3 +83,7 @@ gem 'rubocop', '~> 0.61.1'
 gem 'pg', '~> 1.1', group: :production
 
 gem 'sqlite3', '~> 1.3', group: :development
+
+gem 'line-bot-api', '~> 1.3'
+
+gem 'dotenv-rails', '~> 2.5'
