@@ -18,7 +18,12 @@ jobs:
 
     steps:
       - checkout
-
+      
+      # check rubocop
+      - run:
+        name: rubocop
+        command: bundle exec rubocop
+        
       # Download and cache dependencies
       - restore_cache:
           keys:
