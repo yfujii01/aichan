@@ -17,7 +17,8 @@ class LinebotController < ApplicationController
     body = request.body.read
 
     signature = request.env['HTTP_X_LINE_SIGNATURE']
-    error 400 do 'Bad Request' end unless client.validate_signature(body, signature)
+    # error 400 do 'Bad Request' end unless client.validate_signature(body, signature)
+    error(400) { 'Bad Request' } unless client.validate_signature(body, signature)
 
     events = client.parse_events_from(body)
 
