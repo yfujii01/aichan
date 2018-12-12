@@ -80,6 +80,6 @@ gem 'devise-bootstrap-views', '~> 1.1'
 
 gem 'rubocop', '~> 0.61.1'
 
-gem "pg", "~> 1.1", :group => :production
+gem 'pg', '~> 1.1', group: :production
 
-gem "sqlite3", "~> 1.3", :group => :development
+gem 'sqlite3', '~> 1.3', group: :development

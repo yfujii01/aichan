@@ -95,6 +95,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # mailer setting
-  config.action_mailer.default_url_options = { :host => 'aichan-talk.herokuapp.com', :protocol => 'https' }
-
+  config.action_mailer.default_url_options = { host: 'aichan-talk.herokuapp.com', protocol: 'https' }
 end
