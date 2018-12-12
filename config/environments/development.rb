@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -58,9 +60,8 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-  
-  # メール設定
-  config.action_mailer.default_url_options = { protocol: "https", host: '6bbe8768f7cc4256a8365367aea8f4c7.vfs.cloud9.us-east-1.amazonaws.com' }
-  config.action_mailer.delivery_method = :letter_opener_web
 
+  # メール設定
+  config.action_mailer.default_url_options = { protocol: 'https', host: '6bbe8768f7cc4256a8365367aea8f4c7.vfs.cloud9.us-east-1.amazonaws.com' }
+  config.action_mailer.delivery_method = :letter_opener_web
 end

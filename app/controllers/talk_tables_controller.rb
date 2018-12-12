@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class TalkTablesController < ApplicationController
-  before_action :set_talk_table, only: [:show, :edit, :update, :destroy]
+  before_action :set_talk_table, only: %i[show edit update destroy]
 
   # GET /talk_tables
   # GET /talk_tables.json
@@ -9,8 +11,7 @@ class TalkTablesController < ApplicationController
 
   # GET /talk_tables/1
   # GET /talk_tables/1.json
-  def show
-  end
+  def show; end
 
   # GET /talk_tables/new
   def new
@@ -18,8 +19,7 @@ class TalkTablesController < ApplicationController
   end
 
   # GET /talk_tables/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /talk_tables
   # POST /talk_tables.json
@@ -62,13 +62,14 @@ class TalkTablesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_talk_table
-      @talk_table = TalkTable.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def talk_table_params
-      params.require(:talk_table).permit(:input, :message, :tag)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_talk_table
+    @talk_table = TalkTable.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def talk_table_params
+    params.require(:talk_table).permit(:input, :message, :tag)
+  end
 end

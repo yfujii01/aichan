@@ -1,0 +1,37 @@
+AllCops:
+  Exclude:
+    - db/**/*
+    - tmp/**/*
+    - vendor/**/*
+    - lib/geohash.rb
+    - lib/manager/geo.rb
+    - bin/*
+
+# 1行が長すぎる場合のエラーを外す(デフォルト80)
+Metrics/LineLength:
+  Max: 160
+
+# マルチバイトコメントのエラーを外す  
+Style/AsciiComments:
+  Enabled: false
+
+# Missing top-level class documentation comment.
+Style/Documentation:
+  Enabled: false
+
+# 1メソッドの最大行数(デフォルト10)
+Metrics/MethodLength:
+  Max: 20
+
+# メソッドの複雑度
+Metrics/CyclomaticComplexity:
+  Max: 10
+  
+# メソッドの複雑度
+Metrics/PerceivedComplexity:
+  Max: 10
+
+# class ActiveSupport::TestCase を許可する
+Style/ClassAndModuleChildren:
+  Exclude:
+    - test/test_helper.rb
