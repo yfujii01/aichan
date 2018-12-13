@@ -17,7 +17,6 @@ class LinebotController < ApplicationController
     body = request.body.read
 
     signature = request.env['HTTP_X_LINE_SIGNATURE']
-    # error 400 do 'Bad Request' end unless client.validate_signature(body, signature)
     error(400) { 'Bad Request' } unless client.validate_signature(body, signature)
 
     events = client.parse_events_from(body)
@@ -27,15 +26,25 @@ class LinebotController < ApplicationController
       when Line::Bot::Event::Message
         case event.type
         when Line::Bot::Event::MessageType::Text
-          message = {
-            type: 'text',
-            text: event.message['text']
-          }
+          message = get_message(event)
           client.reply_message(event['replyToken'], message)
         end
       end
     end
 
     head :ok
+  end
+
+  private
+
+  def get_message(event)
+    talkrecord = TalkTable.find_by(input: event.message['text'])
+    talkword = "すみません。その単語の意味は理解しかねます。\nもしよろしければこちらの画面から言葉を教えていただけないでしょうか\nhttps://aichan-talk.herokuapp.com/"
+    talkword = talkrecord.message unless talkrecord.nil?
+    message = {
+      type: 'text',
+      text: talkword
+    }
+    message
   end
 end
