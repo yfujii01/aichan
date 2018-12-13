@@ -6,7 +6,9 @@ Lineで友だちになってメッセージを送ってください。
 
 ## Line友だち追加QRコード
 
-![友達追加QRコード](doc/img/qr.png "友達追加QRコード")
+<a href="https://line.me/R/ti/p/%40bnx9792z"><img height="36" border="0" alt="友だち追加" src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png"></a>
+
+<img src="http://qr-official.line.me/L/B0O7ESA9cS.png">
 
 ## 設定画面
 
