@@ -10,6 +10,8 @@ Lineで友だちになってメッセージを送ってください。
 
 <img src="http://qr-official.line.me/L/B0O7ESA9cS.png">
 
+![友達追加QRコード](https://qr-official.line.me/L/B0O7ESA9cS.png "友達追加QRコード")
+
 ## 設定画面
 
 https://aichan-talk.herokuapp.com/
