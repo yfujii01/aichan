@@ -2,11 +2,13 @@
 
 class TalkTablesController < ApplicationController
   before_action :set_talk_table, only: %i[show edit update destroy]
+  PER = 10
 
   # GET /talk_tables
   # GET /talk_tables.json
   def index
-    @talk_tables = TalkTable.all
+    # @talk_tables = TalkTable.all
+    @talk_tables = TalkTable.page(params[:page]).per(PER)
   end
 
   # GET /talk_tables/1

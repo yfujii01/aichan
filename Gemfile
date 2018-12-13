@@ -87,3 +87,7 @@ gem 'sqlite3', '~> 1.3', group: :development
 gem 'line-bot-api', '~> 1.3'
 
 gem 'dotenv-rails', '~> 2.5'
+
+gem 'kaminari', '~> 1.1'
+
+gem 'kaminari-bootstrap', '~> 3.0'
