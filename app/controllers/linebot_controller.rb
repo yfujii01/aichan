@@ -24,7 +24,10 @@ class LinebotController < ApplicationController
     body = request.body.read
 
     signature = request.env['HTTP_X_LINE_SIGNATURE']
-    error(400) { 'Bad Request' } unless client.validate_signature(body, signature)
+    unless client.validate_signature(body, signature)
+      response_bad_request
+      return
+    end
 
     events = client.parse_events_from(body)
 
@@ -50,8 +53,8 @@ class LinebotController < ApplicationController
     talkword = get_wikipedia(event.message['text']) if talkrecord.nil?
     talkword = no_message if talkword.nil?
     message = {
-        type: 'text',
-        text: talkword
+      type: 'text',
+      text: talkword
     }
     message
   end
@@ -64,9 +67,13 @@ https://aichan-talk.herokuapp.com/"
 
   def get_wikipedia(text)
     page = Wikipedia.find(text)
-    if page != nil then
-      puts page.summary
-      page.summary
-    end
+    return if page.nil?
+
+    puts page.summary
+    page.summary
+  end
+
+  def response_bad_request
+    render status: 400, json: { status: 400, message: 'Bad Request' }
   end
 end
