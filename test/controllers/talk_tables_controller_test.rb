@@ -19,7 +19,7 @@ class TalkTablesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create talk_table' do
     assert_difference('TalkTable.count') do
-      post talk_tables_url, params: { talk_table: { input: @talk_table.input, message: @talk_table.message, tag: @talk_table.tag } }
+      post talk_tables_url, params: { talk_table: { input: 'hoge', message: @talk_table.message, tag: @talk_table.tag } }
     end
 
     assert_redirected_to talk_table_url(TalkTable.last)
@@ -36,7 +36,7 @@ class TalkTablesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update talk_table' do
-    patch talk_table_url(@talk_table), params: { talk_table: { input: @talk_table.input, message: @talk_table.message, tag: @talk_table.tag } }
+    patch talk_table_url(@talk_table), params: { talk_table: { input: 'hoge', message: @talk_table.message, tag: @talk_table.tag } }
     assert_redirected_to talk_table_url(@talk_table)
   end
 

@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  input: MyString
-  message: MyString
-  tag: MyString
+  input: ああああ
+  message: いいいい
+  tag: うううう
 
 two:
-  input: MyString
-  message: MyString
-  tag: MyString
+  input: おおお
+  message: かかか
+  tag: くくく
