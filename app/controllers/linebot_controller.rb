@@ -2,6 +2,13 @@
 
 class LinebotController < ApplicationController
   require 'line/bot' # gem 'line-bot-api'
+  require 'wikipedia'
+
+  # 日本語版Wikipediaを利用する
+  Wikipedia.Configure do
+    domain 'ja.wikipedia.org'
+    path 'w/api.php'
+  end
 
   # callbackアクションのCSRFトークン認証を無効
   protect_from_forgery except: [:callback]
@@ -39,12 +46,27 @@ class LinebotController < ApplicationController
 
   def get_message(event)
     talkrecord = TalkTable.find_by(input: event.message['text'])
-    talkword = "すみません。その単語の意味は理解しかねます。\nもしよろしければこちらの画面から言葉を教えていただけないでしょうか\nhttps://aichan-talk.herokuapp.com/"
     talkword = talkrecord.message unless talkrecord.nil?
+    talkword = get_wikipedia(event.message['text']) if talkrecord.nil?
+    talkword = no_message if talkword.nil?
     message = {
-      type: 'text',
-      text: talkword
+        type: 'text',
+        text: talkword
     }
     message
+  end
+
+  def no_message
+    "すみません。その単語の意味は理解しかねます。
+もしよろしければこちらの画面から言葉を教えていただけないでしょうか？
+https://aichan-talk.herokuapp.com/"
+  end
+
+  def get_wikipedia(text)
+    page = Wikipedia.find(text)
+    if page != nil then
+      puts page.summary
+      page.summary
+    end
   end
 end

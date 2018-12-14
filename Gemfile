@@ -91,3 +91,5 @@ gem 'dotenv-rails', '~> 2.5'
 gem 'kaminari', '~> 1.1'
 
 gem 'kaminari-bootstrap', '~> 3.0'
+
+gem 'wikipedia-client', '~> 1.10'
