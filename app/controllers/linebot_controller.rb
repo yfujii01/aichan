@@ -61,7 +61,7 @@ class LinebotController < ApplicationController
 
   def no_message
     "すみません。その単語の意味は理解しかねます。
-もしよろしければこちらの画面から言葉を教えていただけないでしょうか？
+もしよろしければこちらの画面からその言葉を教えていただけないでしょうか？
 https://aichan-talk.herokuapp.com/"
   end
 
@@ -70,6 +70,10 @@ https://aichan-talk.herokuapp.com/"
     return if page.nil?
 
     puts page.summary
+
+    talk_table = TalkTable.new(input: text, message: page.summary, tag: page.categories)
+    talk_table.save
+
     page.summary
   end
 
