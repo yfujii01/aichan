@@ -15,10 +15,10 @@ class TalkTablesController < ApplicationController
     @talk_tables = @talk_tables.get_by_input params[:input] if params[:input].present?
 
     # messageで部分一致検索
-    @talk_tables = @talk_tables.get_by_input params[:message] if params[:message].present?
+    @talk_tables = @talk_tables.get_by_message params[:message] if params[:message].present?
 
     # tagで部分一致検索
-    @talk_tables = @talk_tables.get_by_input params[:tag] if params[:tag].present?
+    @talk_tables = @talk_tables.get_by_tag params[:tag] if params[:tag].present?
   end
 
   # GET /talk_tables/1
@@ -71,6 +71,11 @@ class TalkTablesController < ApplicationController
       format.html { redirect_to talk_tables_url, notice: 'Talk table was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def talk_table_search_reset
+    puts 'talk_table_search_reset!!!!!!!!!!!'
+    redirect_to talk_tables_path
   end
 
   private

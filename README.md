@@ -16,7 +16,7 @@ https://aichan-talk.herokuapp.com/
 
 ## github
 
-https://github.com/yfujii01/aichan
+# https://github.com/yfujii01/aichan
 
 ## heroku管理画面
 

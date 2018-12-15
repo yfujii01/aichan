@@ -10,7 +10,17 @@ class TalkTable < ApplicationRecord
   validates :input, uniqueness: true
 
   # inputによる絞り込み
-  scope :get_by_input, lambda { |input|
-    where('input like ?', "%#{input}%")
+  scope :get_by_input, lambda { |val|
+    where('input like ?', "%#{val}%")
+  }
+
+  # messageによる絞り込み
+  scope :get_by_message, lambda { |val|
+    where('message like ?', "%#{val}%")
+  }
+
+  # tagによる絞り込み
+  scope :get_by_tag, lambda { |val|
+    where('tag like ?', "%#{val}%")
   }
 end
