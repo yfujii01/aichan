@@ -8,7 +8,8 @@ class TalkTablesController < ApplicationController
   # GET /talk_tables.json
   def index
     # @talk_tables = TalkTable.all
-    @talk_tables = TalkTable.page(params[:page]).per(PER)
+    # @talk_tables = TalkTable.page(params[:page]).per(PER)
+    @talk_tables = TalkTable.order(params[:sort]).page(params[:page]).per(PER)
 
     # inputで部分一致検索
     @talk_tables = @talk_tables.get_by_input params[:input] if params[:input].present?

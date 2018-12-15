@@ -23,11 +23,18 @@
   </div>
   <thead>
   <tr>
-    <th><%= model_class.human_attribute_name(:id) %></th>
-    <th><%= model_class.human_attribute_name(:input) %></th>
-    <th><%= model_class.human_attribute_name(:message) %></th>
-    <th><%= model_class.human_attribute_name(:tag) %></th>
-    <th><%= model_class.human_attribute_name(:created_at) %></th>
+    <% def sortTh(a, contName) %>
+      <% if request.fullpath.include?('desc')
+        link_to a, sort: contName
+      else
+        link_to a,sort: "#{contName} desc"
+      end %>
+    <% end %>
+    <th><%= sortTh(model_class.human_attribute_name(:id),'id') %></th>
+    <th><%= sortTh(model_class.human_attribute_name(:input),'input') %></th>
+    <th><%= sortTh(model_class.human_attribute_name(:message),'message') %></th>
+    <th><%= sortTh(model_class.human_attribute_name(:tag),'tag') %></th>
+    <th><%= sortTh(model_class.human_attribute_name(:created_at),'created_at') %></th>
     <th><%= t '.actions', :default => t("helpers.actions") %></th>
   </tr>
   </thead>
