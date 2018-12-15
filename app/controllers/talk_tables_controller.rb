@@ -9,6 +9,12 @@ class TalkTablesController < ApplicationController
   def index
     # @talk_tables = TalkTable.all
     @talk_tables = TalkTable.page(params[:page]).per(PER)
+
+    # inputで部分一致検索
+    if params[:input].present?
+      @talk_tables = @talk_tables.get_by_input params[:input]
+    end
+
   end
 
   # GET /talk_tables/1

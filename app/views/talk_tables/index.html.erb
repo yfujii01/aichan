@@ -1,38 +1,46 @@
 <%- model_class = TalkTable -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1><%= t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
 <table class="table table-striped">
   <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:input) %></th>
-      <th><%= model_class.human_attribute_name(:message) %></th>
-      <th><%= model_class.human_attribute_name(:tag) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
+  <tr>
+    <th><%= model_class.human_attribute_name(:id) %></th>
+    <th><%= model_class.human_attribute_name(:input) %></th>
+    <th><%= model_class.human_attribute_name(:message) %></th>
+    <th><%= model_class.human_attribute_name(:tag) %></th>
+    <th><%= model_class.human_attribute_name(:created_at) %></th>
+    <th><%= t '.actions', :default => t("helpers.actions") %></th>
+  </tr>
   </thead>
   <tbody>
-    <% @talk_tables.each do |talk_table| %>
-      <tr>
-        <td><%= link_to talk_table.id, talk_table_path(talk_table) %></td>
-        <td><%= talk_table.input %></td>
-        <td><%= talk_table.message %></td>
-        <td><%= talk_table.tag %></td>
-        <td><%=l talk_table.created_at %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_talk_table_path(talk_table), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      talk_table_path(talk_table),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
-        </td>
-      </tr>
+  <div>
+    <%= form_tag(@talk_tables_path, method: "get") do %>
+      <%= label_tag :input, "input" %>
+      <%= text_field_tag :input, params[:input] %>
+      <%= submit_tag "検索" %>
     <% end %>
-    <%= paginate @talk_tables %>
+  </div>
+
+  <% @talk_tables.each do |talk_table| %>
+    <tr>
+      <td><%= link_to talk_table.id, talk_table_path(talk_table) %></td>
+      <td><%= talk_table.input %></td>
+      <td><%= talk_table.message %></td>
+      <td><%= talk_table.tag %></td>
+      <td><%= l talk_table.created_at %></td>
+      <td>
+        <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                    edit_talk_table_path(talk_table), :class => 'btn btn-default btn-xs' %>
+        <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                    talk_table_path(talk_table),
+                    :method => :delete,
+                    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                    :class => 'btn btn-xs btn-danger' %>
+      </td>
+    </tr>
+  <% end %>
+  <%= paginate @talk_tables %>
 
   </tbody>
 </table>
