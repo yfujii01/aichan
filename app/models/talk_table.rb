@@ -9,8 +9,8 @@ class TalkTable < ApplicationRecord
   # 重複禁止
   validates :input, uniqueness: true
 
-  #inputによる絞り込み
-  scope :get_by_input, ->(input) {
-    where("input like ?", "%#{input}%")
+  # inputによる絞り込み
+  scope :get_by_input, lambda { |input|
+    where('input like ?', "%#{input}%")
   }
 end

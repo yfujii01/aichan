@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+.form_date_select {
+    display: inline-block;
+    width: auto;
+}
+
+.label_size {
+    width: 60px;
+}
+
+.text-center {
+    text-align: center;
+}

@@ -1,8 +1,26 @@
 <%- model_class = TalkTable -%>
 <div class="page-header">
-  <h1><%= t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1>あいちゃんの単語帳</h1>
+</div>
+
+<div>
+  <%= form_tag(@talk_tables_path, method: "get") do %>
+    <%= label_tag :input, "Input", class: 'form_date_select label_size' %>
+    <%= text_field_tag :input, params[:input], class: 'form-control form_date_select' %>
+    <br>
+    <%= label_tag :message, "Message", class: 'form_date_select label_size' %>
+    <%= text_field_tag :message, params[:message], class: 'form-control form_date_select' %>
+    <br>
+    <%= label_tag :tag, "Tag", class: 'form_date_select label_size' %>
+    <%= text_field_tag :tag, params[:tag], class: 'form-control form_date_select' %>
+    <br>
+    <%= submit_tag "検索", :class => 'btn btn-primary' %>
+  <% end %>
 </div>
 <table class="table table-striped">
+  <div class="text-center">
+    <%= paginate @talk_tables %>
+  </div>
   <thead>
   <tr>
     <th><%= model_class.human_attribute_name(:id) %></th>
@@ -14,14 +32,6 @@
   </tr>
   </thead>
   <tbody>
-  <div>
-    <%= form_tag(@talk_tables_path, method: "get") do %>
-      <%= label_tag :input, "input" %>
-      <%= text_field_tag :input, params[:input] %>
-      <%= submit_tag "検索" %>
-    <% end %>
-  </div>
-
   <% @talk_tables.each do |talk_table| %>
     <tr>
       <td><%= link_to talk_table.id, talk_table_path(talk_table) %></td>
@@ -40,11 +50,13 @@
       </td>
     </tr>
   <% end %>
-  <%= paginate @talk_tables %>
-
   </tbody>
 </table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_talk_table_path,
-            :class => 'btn btn-primary' %>
+<div class="text-center">
+  <%= paginate @talk_tables %>
+</div>
+<div>
+  <%= link_to t('.new', :default => t("helpers.links.new")),
+              new_talk_table_path,
+              :class => 'btn btn-primary' %>
+</div>
