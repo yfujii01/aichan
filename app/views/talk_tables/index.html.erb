@@ -5,16 +5,17 @@
 
 <div>
   <%= form_tag(@talk_tables_path, method: "get") do %>
-    <%= label_tag :input, "Input", class: 'form_date_select label_size' %>
-    <%= text_field_tag :input, params[:input], class: 'form-control form_date_select' %>
-    <br>
-    <%= label_tag :message, "Message", class: 'form_date_select label_size' %>
-    <%= text_field_tag :message, params[:message], class: 'form-control form_date_select' %>
-    <br>
-    <%= label_tag :tag, "Tag", class: 'form_date_select label_size' %>
-    <%= text_field_tag :tag, params[:tag], class: 'form-control form_date_select' %>
-    <br>
-    <%= submit_tag "検索", :class => 'btn btn-primary' %>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">Input<%= text_field_tag :input, params[:input], class: 'form-control form_date_select' %></div>
+        <div class="col-sm-3">Message<%= text_field_tag :message, params[:message], class: 'form-control form_date_select' %></div>
+        <div class="col-sm-3">Tag<%= text_field_tag :tag, params[:tag], class: 'form-control form_date_select' %></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-1"><%= submit_tag "検索", class: 'btn btn-primary' %></div>
+      </div>
+    </div>
+
   <% end %>
 </div>
 <table class="table table-striped">
@@ -25,16 +26,16 @@
   <tr>
     <% def sortTh(a, contName) %>
       <% if request.fullpath.include?('desc')
-        link_to a, sort: contName
-      else
-        link_to a,sort: "#{contName} desc"
-      end %>
+           link_to a, sort: contName
+         else
+           link_to a, sort: "#{contName} desc"
+         end %>
     <% end %>
-    <th><%= sortTh(model_class.human_attribute_name(:id),'id') %></th>
-    <th><%= sortTh(model_class.human_attribute_name(:input),'input') %></th>
-    <th><%= sortTh(model_class.human_attribute_name(:message),'message') %></th>
-    <th><%= sortTh(model_class.human_attribute_name(:tag),'tag') %></th>
-    <th><%= sortTh(model_class.human_attribute_name(:created_at),'created_at') %></th>
+    <th><%= sortTh(model_class.human_attribute_name(:id), 'id') %></th>
+    <th><%= sortTh(model_class.human_attribute_name(:input), 'input') %></th>
+    <th><%= sortTh(model_class.human_attribute_name(:message), 'message') %></th>
+    <th><%= sortTh(model_class.human_attribute_name(:tag), 'tag') %></th>
+    <th><%= sortTh(model_class.human_attribute_name(:created_at), 'created_at') %></th>
     <th><%= t '.actions', :default => t("helpers.actions") %></th>
   </tr>
   </thead>
