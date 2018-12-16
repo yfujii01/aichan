@@ -14,9 +14,12 @@ Lineで友だちになってメッセージを送ってください。
 
 https://aichan-talk.herokuapp.com/
 
+
+## 開発者用情報
+
 ## github
 
-# https://github.com/yfujii01/aichan
+https://github.com/yfujii01/aichan
 
 ## heroku管理画面
 
